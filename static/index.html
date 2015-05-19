@@ -18,8 +18,8 @@
             <td>Created</td>
             <td>Actions</td>
         </tr>
-        <tr ng-repeat="task in tasks">
-            <td  ng-bind="task.task"></td>
+        <tr ng-repeat="task in tasks | orderBy: 'deadline'">
+            <td ng-bind="task.task"></td>
             <td ng-bind="task.priority"></td>
             <td ng-bind="task.deadline | date: 'MMMM d yyyy'"></td>
             <td ng-bind="task.created | date: 'MMMM d yyyy'"></td>

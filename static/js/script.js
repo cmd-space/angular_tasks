@@ -25,4 +25,11 @@ myApp.controller('tasksController', function($scope, tasksFactory){
     tasksFactory.getPriority(function(data){
         $scope.priority = data;
     });
+    $scope.addTask = function(){
+        $scope.newTask.created = new Date();
+        $scope.tasks.push($scope.newTask);
+    }
+    $scope.removeTask = function(task){
+        $scope.tasks.splice($scope.tasks.indexOf(task), 1);
+    }
 });
