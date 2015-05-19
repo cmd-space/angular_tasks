@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='tasks'>
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body ng-controller="tasksController">
+    <h3>Tasks</h3>
+    <table>
+        <tr class='trhead'>
+            <td>Tasks</td>
+            <td>Priority</td>
+            <td>Deadline</td>
+            <td>Created</td>
+            <td>Actions</td>
+        </tr>
+        <tr ng-repeat="task in tasks">
+            <td  ng-bind="task.task"></td>
+            <td ng-bind="task.priority"></td>
+            <td ng-bind="task.deadline | date: 'MMMM d yyyy'"></td>
+            <td ng-bind="task.created | date: 'MMMM d yyyy'"></td>
+            <td><button ng-click="removeTask(task)">Remove</button></td>
+        </tr>
+    </table>
+    <h3>Add a new task</h3>
+    <form>
+        Task Name: <input type="text" ng-model="newTask.task"> <br>
+        Priority: <select ng-model="newTask.priority" ng-options="priority for priority in priority track by priority">
+                     <option value="">--choose priority--</option>
+                  </select> <br>
+        Deadline: <input type="date" ng-model="newTask.deadline"> <br>
+        <input type="submit" value="Create" ng-click="addTask()">
+    </form>
+</body>
+</html>
